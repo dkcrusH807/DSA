@@ -1,0 +1,36 @@
+def solvequeen(n):
+    res=[]
+    b=[["."]*n for _ in range(n)]
+    def issafe(row,col):
+        for r in range(row):
+            if b[r][col]=="Q":
+                return False
+        r,c=row-1,col-1
+        while r>=0 and c>=0:
+            if b[r][c]=="Q":
+                return False
+            r-=1
+            c-=1
+        r,c=row-1,col+1
+        while r>=0 and c<n:
+            if b[r][c]=="Q":
+                return False
+            r-=1
+            c+=1
+        return True
+    def back(row):
+        if row==n:
+            res.append(["".join(r) for r in b])
+            return
+        for col in range(n):
+            if issafe(row,col):
+                b[row][col]="Q"
+                back(row+1)
+                b[row][col]="."
+    back(0)
+    return res
+sol=solvequeen(4)
+for s in sol:
+    for r in s:
+        print(r)
+    print()
