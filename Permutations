@@ -15,4 +15,20 @@ def permute(nums):
     back([],[False]*len(nums))
     return res
 print(permute([1,2,3,4]))
+----------------------------
+def permute(nums):
+    res=[];sol=[]
+    def back():
+        if len(sol)==len(nums):
+            res.append(sol[:])
+            return
+        else:
+            for x in nums:
+                if x not in sol:
+                    sol.append(x)
+                    back()
+                    sol.pop()
+    back()      
+    return res
+print(permute([1,2,3,4]))
 
