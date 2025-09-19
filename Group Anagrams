@@ -1,0 +1,9 @@
+from collections import defaultdict
+    def groupAnagrams(self, strs):
+        g=defaultdict(list)
+        for w in strs:
+            c=[0]*26
+            for ch in w:
+                c[ord(ch)-ord('a')]+=1
+            g[tuple(c)].append(w)
+        return list(g.values())
