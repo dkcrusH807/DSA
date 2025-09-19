@@ -1,0 +1,20 @@
+def additive(nums):
+    n=len(nums)
+    def back(st,p):
+        if st==n and len(p)>=3:
+            return True
+        for e in range(st+1,n+1):
+            s=nums[st:e]
+            if len(s)>1 and s[0]=="0":
+                return False
+            curr=int(s)
+            if len(p)>=2 and curr!=p[-1]+p[-2]:
+                if curr>p[-1]+p[-2]:
+                    return False
+                continue
+            if back(e,p+[curr]):
+                return True
+        return False
+    return back(0,[])
+    
+print(additive("199100199"))
