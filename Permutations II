@@ -1,0 +1,20 @@
+ def permuteUnique(self, nums):
+        res=[]
+        nums.sort()
+        u=[False]*len(nums)
+        def back(p):
+            if len(p)==len(nums):
+                res.append(p[:])
+                return
+            for i in range(len(nums)):
+                if u[i]:
+                    continue
+                if i>0 and nums[i]==nums[i-1] and not u[i-1]:
+                    continue
+                u[i]=True
+                p.append(nums[i])
+                back(p)
+                p.pop()
+                u[i]=False
+        back([])
+        return res
