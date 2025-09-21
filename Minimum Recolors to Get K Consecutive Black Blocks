@@ -1,0 +1,12 @@
+def recolor(b,k):
+    n=len(b)
+    w=sum(1 for i in range(k) if b[i]=='W')
+    minops=w
+    for i in range(k,n):
+        if b[i-k]=='W':
+            w-=1
+        if b[i]=='W':
+            w+=1
+        minops=min(minops,w)
+    return minops
+print(recolor("WBBWWBBWBW",7))
