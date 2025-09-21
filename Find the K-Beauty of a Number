@@ -1,0 +1,20 @@
+def kbeauty(num,k):
+    s=str(num)
+    n=len(s)
+    if k>n:
+        return 0
+    c=0
+    win=0
+    for i in range(k):
+        win=win*10+(ord(s[i])-ord('0'))
+    if win!=0 and num%win==0:
+        c+=1
+    pow10=10**(k-1)
+    for i in range(k,n):
+        l=ord(s[i-k])-ord('0')
+        t=ord(s[i])-ord('0')
+        win=(win-l*pow10)*10+t
+        if win!=0 and num%win==0:
+            c+=1
+    return c
+print(kbeauty(430043,2))
