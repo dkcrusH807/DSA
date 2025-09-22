@@ -1,0 +1,7 @@
+    def containsNearbyDuplicate(self, nums, k):
+        lastseen={}
+        for i,num in enumerate(nums):
+            if num in lastseen and i-lastseen[num] <= k:
+                return True
+            lastseen[num]=i
+        return False
