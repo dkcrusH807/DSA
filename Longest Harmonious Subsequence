@@ -1,0 +1,8 @@
+    from collections import Counter
+    def findLHS(self, nums):
+        c=Counter(nums)
+        mal=0
+        for n in c:
+            if n+1 in c:
+                mal=max(mal,c[n]+c[n+1])
+        return mal
