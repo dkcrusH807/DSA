@@ -1,0 +1,17 @@
+def longestAlternatingSubarray(self, nums, threshold):
+        ans=0
+        n=len(nums)
+        currl=0
+        for i,x in enumerate(nums):
+            if x>threshold:
+                currl=0
+                continue
+            if currl==0:
+                currl=1 if x%2==0 else 0
+            else:
+                if x%2!=nums[i-1]%2:
+                    currl+=1
+                else:
+                    currl=1 if x%2==0 else 0
+            ans=max(ans,currl)
+        return ans
