@@ -1,0 +1,32 @@
+def minimumSubarrayLength(self, nums, k):
+        n=len(nums)
+        l=0
+        curror=0
+        bc=[0]*32
+        minl=n+1
+        for r,curr in enumerate(nums):
+            curror|=curr
+            for b in range(32):
+                if (curr>>b)&1:
+                    bc[b]+=1
+            while l<=r and curror>=k:
+                minl=min(minl,r-l+1)
+                remo=nums[l]
+                for b in range(32):
+                    if (remo>>b)&1:
+                        bc[b]-=1
+                        if bc[b]==0:
+                            curror^=(1<<b)
+                l+=1
+        return minl if minl<=n else -1 
+n=len(nums)
+ans=n+1
+curr=0
+for i in range(n):
+    curr=0
+    for j in range(i,n):
+        curr|=nums[j]
+        if curr>=k:
+            ans=min(ans,j-i+1)
+            break
+print(ans)
