@@ -1,0 +1,17 @@
+   def __init__(self, maxSize):
+        self.st=[]
+        self.maxSize=maxSize
+
+    def push(self, x):
+        if len(self.st)<self.maxSize:
+            self.st.append(x)
+
+    def pop(self):
+        if not self.st:
+            return -1
+        return self.st.pop()
+ 
+    def increment(self, k, val):
+        l=min(k,len(self.st))
+        for i in range(l):
+            self.st[i]+=val
