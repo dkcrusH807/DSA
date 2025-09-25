@@ -1,0 +1,17 @@
+def punishmentNumber(self, n):
+        def part(s,t):
+            if not s:
+                return t==0
+            for j in range(1,len(s)+1):
+                num=int(s[:j])
+                if num>t:
+                    break
+                if part(s[j:],t-num):
+                    return True
+            return False
+        ans=0
+        for i in range(1,n+1):
+            sq=i*i
+            if part(str(sq),i):
+                ans+=sq
+        return ans
