@@ -1,0 +1,23 @@
+def diffWaysToCompute(self, expression):
+        m={}
+        def ways(exp):
+            if exp in m:
+                return m[exp]
+            if exp.isdigit():
+                return [int(exp)]
+            res=[]
+            for i,ch in enumerate(exp):
+                if ch in "+-*":
+                    l=ways(exp[:i])
+                    r=ways(exp[i+1:])
+                    for a in l:
+                        for b in r:
+                            if ch=="+":
+                                res.append(a+b)
+                            if ch=="-":
+                                res.append(a-b)
+                            if ch=="*":
+                                res.append(a*b)
+            m[exp]=res
+            return res
+        return ways(expression)
