@@ -1,0 +1,17 @@
+from collections import deque
+    def __init__(self):
+        self.st=deque()
+
+    def push(self, x):
+        self.st.append(x)
+        for _ in range(len(self.st)-1):
+            self.st.append(self.st.popleft())
+
+    def pop(self):
+        return self.st.popleft()
+
+    def top(self):
+        return self.st[0]
+
+    def empty(self):
+        return not self.st
