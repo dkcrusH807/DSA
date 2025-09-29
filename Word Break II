@@ -1,0 +1,12 @@
+    def wordBreak(self, s, wordDict):
+        ans=[]
+        def back(st,p):
+            if st==len(s):
+                ans.append(" ".join(p))
+            for i in wordDict:
+                if s[st:st+len(i)]==i:
+                    p.append(i)
+                    back(st+len(i),p)
+                    p.pop()
+        back(0,[])
+        return ans
