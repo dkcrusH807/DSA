@@ -1,0 +1,16 @@
+    def wordBreak(self, s, wordDict):
+        ws=set(wordDict)
+        n=len(s)
+        m={}
+        def dfs(st):
+            if st==n:
+                return True
+            if st in m:
+                return m[st]
+            for w in ws:
+                if s.startswith(w,st) and dfs(st+len(w)):
+                    m[st]=True
+                    return True
+            m[st]=False
+            return False
+        return dfs(0)
