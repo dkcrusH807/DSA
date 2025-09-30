@@ -1,0 +1,16 @@
+def kthCharacter(self, k, operations):
+        l=1
+        m=0
+        for op in operations:
+            l*=2
+            m+=1
+            if l>=k:
+                break
+        sc=0
+        for i in reversed(range(m)):
+            h=l//2
+            if k>h:
+                k-=h
+                sc+=operations[i]
+            l=h
+        return chr(ord('a')+(sc%26))
