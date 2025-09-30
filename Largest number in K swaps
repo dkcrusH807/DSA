@@ -1,0 +1,19 @@
+    def findMaximumNum(self, s, k):
+        self.num=s
+        def back(c,k,i):
+            if k==0 or i==len(c):
+                return
+            maxnum=max(c[i:])
+            if maxnum!=c[i]:
+                for j in range(len(c)-1,i,-1):
+                    if maxnum==c[j]:
+                        c[i],c[j]=c[j],c[i]
+                        newnum="".join(c)
+                        if newnum>self.num:
+                            self.num=newnum
+                        back(c,k-1,i+1)
+                        c[i],c[j]=c[j],c[i]
+            else:
+                back(c,k,i+1)
+        back(list(s),k,0)
+        return self.num
