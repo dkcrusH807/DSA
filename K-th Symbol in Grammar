@@ -1,0 +1,16 @@
+class sol:
+    def kthGrammar(self, n: int, k: int) -> int:
+        ans="0"
+        for i in range(1,n+1):
+            t=""
+            for j in ans:
+                if j=="0":
+                    t+="01"
+                else:
+                    t+="10"
+            ans=t
+        return ans[k-1]
+o=sol()
+print(o.kthGrammar(2,2))
+**********************************************************
+return bin(k-1).count("1")%2
