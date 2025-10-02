@@ -1,0 +1,5 @@
+    def findTheWinner(self, n, k):
+        w=0
+        for i in range(2,n+1):
+            w=(w+k)%i
+        return w+1
