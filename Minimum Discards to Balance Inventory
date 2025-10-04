@@ -1,0 +1,18 @@
+    from collections import defaultdict, deque 
+    def minArrivalsToDiscard(self, arrivals, w, m):
+        n=len(arrivals)
+        dis=0
+        win=deque()
+        c=defaultdict(int)
+        for d,i in enumerate(arrivals):
+            while win and win[0][0]< d-w+1:
+                od,oi=win.popleft()
+                c[oi]-=1
+                if c[oi]==0:
+                    del c[oi]
+            if c[i]<m:
+                win.append((d,i))
+                c[i]+=1
+            else:
+                dis+=1
+        return dis
