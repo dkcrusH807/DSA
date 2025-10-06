@@ -1,0 +1,12 @@
+    def maxScore(self, cardPoints, k):
+        n=len(cardPoints)
+        t=sum(cardPoints)
+        if k==n:
+            return t
+        ws=n-k
+        winsum=sum(cardPoints[:ws])
+        minsum=winsum
+        for i in range(ws,n):
+            winsum+=cardPoints[i]-cardPoints[i-ws]
+            minsum=min(minsum,winsum)
+        return t-minsum
