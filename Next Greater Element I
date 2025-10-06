@@ -1,0 +1,10 @@
+    def nextGreaterElement(self, nums1, nums2):
+        st=[]
+        ng={}
+        for i in nums2:
+            while st and st[-1]<i:
+                ng[st.pop()]=i
+            st.append(i)
+        while st:
+            ng[st.pop()]=-1
+        return [ng[x] for x in nums1]
