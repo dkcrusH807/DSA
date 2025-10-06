@@ -1,0 +1,17 @@
+   from collections import Counter
+    def checkInclusion(self, s1, s2):
+        n,m=len(s1),len(s2)
+        if n>m:
+            return False
+        c=Counter(s1)
+        w=Counter(s2[:n])
+        if w==c:
+            return True
+        for i in range(n,m):
+            w[s2[i]]+=1
+            w[s2[i-n]]-=1
+            if w[s2[i-n]] ==0:
+                del w[s2[i-n]]
+            if w==c:
+                return True
+        return False
