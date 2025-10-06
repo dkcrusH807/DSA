@@ -1,0 +1,12 @@
+    def numOfSubarrays(self, arr, k, threshold):
+        n=len(arr)
+        t=k*threshold
+        curr=sum(arr[:k])
+        c=0
+        if curr>=t:
+            c+=1
+        for i in range(k,n):
+            curr+=arr[i]-arr[i-k]
+            if curr>=t:
+                c+=1
+        return c
