@@ -1,0 +1,10 @@
+    def longestSemiRepetitiveSubstring(self, s):
+        l=0
+        pd=-1
+        ans=1
+        for r in range(1,len(s)):
+            if s[r]==s[r-1]:
+                l=pd+1
+                pd=r-1
+            ans=max(ans,r-l+1)
+        return ans
