@@ -1,0 +1,11 @@
+def jumpgameII(nums):
+    currend=0
+    jump=0
+    far=0
+    for i in range(len(nums)-1):
+        far=max(far,i+nums[i])
+        if i==currend:
+            jump+=1
+            currend=far
+    return jump
+print(jumpgameII([2,3,0,1,4]))
