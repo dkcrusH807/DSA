@@ -1,0 +1,15 @@
+    def totalSteps(self, nums):
+        ans=0
+        st=[]
+        for x in nums:
+            s=0
+            while st and x>=st[-1][0]:
+                s=max(s,st[-1][1])
+                st.pop()
+            if st:
+                s+=1
+            else:
+                s=0
+            ans=max(ans,s)
+            st.append((x,s))
+        return ans
