@@ -1,0 +1,12 @@
+    def calculateSpan(self, arr):
+        st=[]
+        sp=[]
+        for i,p in enumerate(arr):
+            while st and st[-1][0]<=p:
+                st.pop()
+            if not st:
+                sp.append(i+1)
+            else:
+                sp.append(i-st[-1][1])
+            st.append((p,i))
+        return sp
