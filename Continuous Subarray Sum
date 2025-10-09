@@ -1,0 +1,12 @@
+    def checkSubarraySum(self, nums, k):
+        rem_map={0:-1};pre=0
+        for i,num in enumerate(nums):
+            pre+=num
+            if k!=0:
+                pre%=k
+            if pre in rem_map:
+                if i-rem_map[pre]>1:
+                    return True
+            else:
+                rem_map[pre]=i
+        return False
