@@ -1,0 +1,23 @@
+    def sumSubarrayMins(self, arr):
+        n=len(arr)
+        m=10**9+7
+        l=[0]*n
+        r=[0]*n
+        st=[]
+        for i in range(n):
+            c=1
+            while st and st[-1][0]>arr[i]:
+                c+=st.pop()[1]
+            l[i]=c
+            st.append((arr[i],c))
+        st=[]
+        for i in range(n-1,-1,-1):
+            c=1
+            while st and st[-1][0]>=arr[i]:
+                c+=st.pop()[1]
+            r[i]=c
+            st.append(((arr[i],c)))
+        res=0
+        for i in range(n):
+            res=(res+arr[i]*l[i]*r[i])%m
+        return res
