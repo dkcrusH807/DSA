@@ -1,0 +1,13 @@
+    def minimumSumSubarray(self, nums, l, r):
+        n=len(nums)
+        minpos=float('inf')
+        for ws in range(l,r+1):
+            winsum=sum(nums[:ws])
+            if winsum>0:
+                minpos=min(minpos,winsum)
+            for i in range(ws,n):
+                winsum-=nums[i-ws]
+                winsum+=nums[i]
+                if winsum>0:
+                    minpos=min(minpos,winsum)
+        return -1 if minpos==float('inf') else minpos
