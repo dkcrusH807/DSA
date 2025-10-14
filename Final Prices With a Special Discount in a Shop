@@ -1,0 +1,8 @@
+    def finalPrices(self, prices):
+        st=[]
+        for i in range(len(prices)):
+            while st and prices[st[-1]]>=prices[i]:
+                j=st.pop()
+                prices[j]=prices[j]-prices[i]
+            st.append(i)
+        return prices
