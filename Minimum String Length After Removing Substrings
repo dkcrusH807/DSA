@@ -1,0 +1,10 @@
+    def minLength(self, s):
+        st=[]
+        for ch in s:
+            st.append(ch)
+            if len(st)>=2:
+                if (st[-2]=="A" and st[-1]=="B") or \
+                (st[-2]=="C" and st[-1]=="D"):
+                    st.pop()
+                    st.pop()
+        return len(st)
