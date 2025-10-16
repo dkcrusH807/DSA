@@ -1,0 +1,13 @@
+    def findRestaurant(self, list1, list2):
+        imap={name:i for i,name in enumerate(list1)}
+        res=[]
+        minsum=float('inf')
+        for j,name in enumerate(list2):
+            if name in imap:
+                s=j+imap[name]
+                if s<minsum:
+                    minsum=s
+                    res=[name]
+                elif s==minsum:
+                    res.append(name)
+        return res
