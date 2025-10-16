@@ -1,0 +1,12 @@
+    def subArrayRanges(self, nums):
+        n=len(nums)
+        t=0
+        for i in range(n):
+            cmin=nums[i]
+            cmax=nums[i]
+            for j in range(i,n):
+                cmin=min(cmin,nums[j])
+                cmax=max(cmax,nums[j])
+                r=cmax-cmin
+                t+=r
+        return t
