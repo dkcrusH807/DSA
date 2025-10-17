@@ -1,0 +1,13 @@
+    def findRelativeRanks(self, score):
+        sc=sorted(score,reverse=True)
+        rmap={}
+        for i,s in enumerate(sc):
+            if i==0:
+                rmap[s]="Gold Medal"
+            elif i==1:
+                rmap[s]="Silver Medal"
+            elif i==2:
+                rmap[s]="Bronze Medal"
+            else:
+                rmap[s]=str(i+1)
+        return [rmap[s] for s in score]
