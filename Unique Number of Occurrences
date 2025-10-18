@@ -1,0 +1,5 @@
+    from collections import Counter
+    def uniqueOccurrences(self, arr):
+        freq=Counter(arr)
+        c=freq.values()
+        return len(c) == len(set(c))
