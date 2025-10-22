@@ -1,0 +1,11 @@
+    def lastRemaining(self, n):
+        h=1
+        s=1
+        l=True
+        while n>1:
+            if l or n%2==1:
+                h+=s
+            s*=2
+            n//=2
+            l=not l
+        return h
