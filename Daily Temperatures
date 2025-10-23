@@ -1,0 +1,11 @@
+    def dailyTemperatures(self, temperatures):
+        n=len(temperatures)
+        ans=[0]*n
+        st=[]
+        for i,curr in enumerate(temperatures):
+            while st and curr>temperatures[st[-1]]:
+                prev=st.pop()
+                w=i-prev
+                ans[prev]=w
+            st.append(i)
+        return ans
