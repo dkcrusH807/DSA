@@ -1,0 +1,25 @@
+class Solution:
+    def near(self,arr,n,isleft):
+        res=[0]*n
+        st=[]
+        trav=range(n) if isleft else range(n-1,-1,-1)
+        for i in trav:
+            curr=arr[i]
+            while st and st[-1]>=curr:
+                st.pop()
+            if st:
+                res[i]=st[-1]
+            st.append(curr)
+        return res
+    def findMaxDiff(self, arr):
+        n=len(arr)
+        if n==0:
+            return 0
+        nls=self.near(arr,n,isleft=True)
+        nrs=self.near(arr,n,isleft=False)
+        ans=0
+        for i in range(n):
+            d=abs(nls[i]-nrs[i])
+            if d>ans:
+                ans=d
+        return ans
