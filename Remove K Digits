@@ -1,0 +1,12 @@
+    def removeKdigits(self, num, k):
+        st=[]
+        for d in num:
+            while k>0 and st and st[-1]>d:
+                st.pop()
+                k-=1
+            st.append(d)
+        while k>0:
+            st.pop()
+            k-=1
+        res="".join(st).lstrip("0")
+        return res if res else "0"
